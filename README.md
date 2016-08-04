@@ -16,12 +16,12 @@ Download automated build from public Docker Hub Registry: docker pull kdelfour/c
 
 ## Usage
 
-    docker run -it -d -p 80:80 kdelfour/cloud9-docker
-    
+    docker run -it -d -p 80:80 -e "USER=foo" -e "PASS=bar" kdelfour/cloud9-docker
+
 You can add a workspace as a volume directory with the argument *-v /your-path/workspace/:/workspace/* like this :
 
     docker run -it -d -p 80:80 -v /your-path/workspace/:/workspace/ kdelfour/cloud9-docker
-    
+
 ## Build and run with custom config directory
 
 Get the latest version from github
@@ -32,9 +32,9 @@ Get the latest version from github
 Build it
 
     sudo docker build --force-rm=true --tag="$USER/cloud9-docker:latest" .
-    
+
 And run
 
-    sudo docker run -d -p 80:80 -v /your-path/workspace/:/workspace/ $USER/cloud9-docker:latest
-    
+    sudo docker run -d -p 80:80 -e "USER=foo" -e "PASS=bar" -v /your-path/workspace/:/workspace/ $USER/cloud9-docker:latest
+
 Enjoy !!    
